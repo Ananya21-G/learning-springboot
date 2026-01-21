@@ -1,7 +1,18 @@
 package com.example.demo.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="Affair_Table")
 public class Affair {
+
+    @Id
+    @GeneratedValue
     //requirements(fields) for the Affair
+    private int id;
     private String partner1;
     private String partner2;
 
@@ -9,6 +20,10 @@ public class Affair {
     public Affair(String partner1, String partner2){
         this.partner1 = partner1;
         this.partner2 = partner2;
+    }
+
+    public Affair(){
+
     }
 
     public String getPartner1(){

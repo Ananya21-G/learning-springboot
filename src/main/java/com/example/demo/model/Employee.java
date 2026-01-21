@@ -1,21 +1,32 @@
 package com.example.demo.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name="Employee_Table")
 public class Employee {
-    private int id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String name;
     private String jobRole;
 
     public Employee() {}
 
-    public Employee(int id, String name,String jobRole) {
+    public Employee(Integer id, String name,String jobRole) {
         this.id = id;
         this.name = name;
         this.jobRole = jobRole;
     }
 
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public String getName() {

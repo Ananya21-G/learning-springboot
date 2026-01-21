@@ -2,32 +2,32 @@ package com.example.demo.controller;
 import com.example.demo.model.Affair;
 import java.util.List;
 
+import com.example.demo.repository.AffairRepository;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
+
 
 @RestController
 @RequestMapping("/affair")
 @CrossOrigin(origins = "http://127.0.0.1:5500/")
 
-
 public class AffairController {
-    private List<Affair> AffairList = new ArrayList<>();
-
-    public AffairController(){
-
+    private final AffairRepository affairRepository;
+    public AffairController(AffairRepository affairRepository){
+        this.affairRepository=affairRepository;
     }
 
     @GetMapping
     public List<Affair> GetData(){
-        return AffairList;
+
+        return affairRepository.findAll();
     }
 
     @PostMapping
-    public String PostData(@RequestBody Affair NewAffair){
-        AffairList.add(NewAffair);
-        return "Affair Created!!!";
+    public Affair PostData(@RequestBody Affair NewAffair){
+        return affairRepository.save(NewAffair);
     }
+
 
 
 }
