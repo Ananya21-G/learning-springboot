@@ -28,6 +28,9 @@ public class AffairController {
         return affairRepository.save(NewAffair);
     }
 
-
-
+    @DeleteMapping ("/{id}")
+    public String DeleteData(@PathVariable Integer id){
+        affairRepository.deleteById(id);
+        return "Successfully Broken up";
+    }
 }
